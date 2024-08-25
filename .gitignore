@@ -128,3 +128,4 @@ dist
 
 #Link a la carpeta donde almacenamos los archivos de trabajo.
 Asset Files.lnk
+dev*

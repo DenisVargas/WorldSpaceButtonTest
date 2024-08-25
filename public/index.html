@@ -6,25 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Document</title>
-
+    
     <!-- Incluir Libreria AFrame -->
-    <!-- <script src="./lib/aframe-v1.3.0.min.js"></script> -->
+    <script src="./lib/aframe-v1.3.0.min.js"></script>
+    <!-- <script src="./editor.js"></script> -->
     <!-- Incluir Componentes adicionales -->
+    <script src="./components/clicListener.js"></script>
+    <script src="./components/aframeBasicButton.js"></script>
 </head>
 <body>
+    
+    <!-- Editor -->
+    <!-- <button id="transformMode" type="button">Transform</button> -->
+    
     <!-- Custom UI -->
-
-    <a-scene>
+    
+    <a-scene cursor="rayOrigin:mouse">
         <!-- Asset Preloading -->
         <a-asset>
             <!-- <a-asset-item id="" src=""></a-asset-item> -->
+            <a-asset-item id="buttons" src="./assets/Buttons.gltf"></a-asset-item>
         </a-asset>
         <!-- Rendering -->
-        <a-camera id="main-camera" position="-0.051 1.600 3.312" look-controls="enabled:true; reverse-mouse-drag:true;" near="0.5" far="1000"></a-camera>
+        <a-camera 
+            id="main-camera" 
+            position="-0.051 1.600 3.312" 
+            look-controls="enabled:true; reverse-mouse-drag:true;" 
+            near="0.5" 
+            far="1000" 
+        >
+            <a-entity raycaster="objects:.interactable; near: 0.01; showLine:true"></a-entity>
+        </a-camera>
+        
         <!-- Lighting -->
         <a-entity id="mainLight" light="type:directional; color:#fff; intensity:1.6; castShadow:true"></a-entity>
+        
+        <a-box id="boxId" class="interactable" position="0 0.5 -3" rotation="0 45 0" color="blue" material="shader: flat; color: blue" start-button></a-box>
 
+    
         <!-- Pon tus elementos aqui. -->
-    </a-scene>
+        <a-entity gltf-model="#buttons" cursoreventlistener></a-entity>
+</a-scene>
 </body>
 </html>
